@@ -143,14 +143,8 @@ open class LGButton: UIControl {
         }
     }
     
-    @IBInspectable public var titleFontName: String? {
-        didSet{
-            setupView()
-        }
-    }
-    
-    @IBInspectable public var titleFontSize: CGFloat = 14.0 {
-        didSet{
+    @IBInspectable public var titleFont: UIFont = UIFont.systemFont(ofSize: 14) {
+        didSet {
             setupView()
         }
     }
@@ -335,14 +329,8 @@ open class LGButton: UIControl {
         }
     }
     
-    @IBInspectable public var loadingFontName: String? {
-        didSet{
-            setupView()
-        }
-    }
-    
-    @IBInspectable public var loadingFontSize: CGFloat = 14.0 {
-        didSet{
+    @IBInspectable public var loadingFont: UIFont = UIFont.systemFont(ofSize: 14) {
+        didSet {
             setupView()
         }
     }
@@ -494,11 +482,7 @@ open class LGButton: UIControl {
         titleLbl.numberOfLines = titleNumOfLines
         titleLbl.text = titleString
         titleLbl.textColor = titleColor
-        if titleFontName != nil {
-            titleLbl.font = UIFont.init(name:titleFontName! , size:titleFontSize)
-        }else{
-            titleLbl.font = UIFont.systemFont(ofSize: titleFontSize)
-        }
+        titleLbl.font = titleFont
     }
     
     fileprivate func setupLeftIcon(){
@@ -562,11 +546,7 @@ open class LGButton: UIControl {
         loadingLabel.isHidden = loadingString.isEmpty
         loadingLabel.text = loadingString
         loadingLabel.textColor = loadingColor
-        if loadingFontName != nil {
-            loadingLabel.font = UIFont.init(name:loadingFontName! , size:titleFontSize)
-        }else{
-            loadingLabel.font = UIFont.systemFont(ofSize: loadingFontSize)
-        }
+        loadingLabel.font = loadingFont
         loadingSpinner.color = loadingSpinnerColor
         setupBorderAndCorners()
     }
